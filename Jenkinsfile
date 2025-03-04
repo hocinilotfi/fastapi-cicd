@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Create Network') {
+            steps {
+                sh 'docker network ls | grep fastapi-net || docker network create fastapi-net'
+            }
+        }
         stage('Cleanup Previous Container') {
             steps {
                 sh '''
