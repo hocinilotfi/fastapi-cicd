@@ -14,7 +14,7 @@ pipeline{
 
         stage('run container'){
             steps{
-                sh 'docker run -d -p 8000:8000 fastapi-cicd'
+                sh 'docker run -d -p 80:80 fastapi-cicd'
             }
         }
        
