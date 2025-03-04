@@ -8,7 +8,7 @@ pipeline{
         }
         stage('Deploy'){
             steps{
-                sh 'docker run fastapi-cicd'
+                sh 'docker images'
             }
         }
        
