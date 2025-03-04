@@ -17,6 +17,11 @@ pipeline{
                 sh 'docker run -d -p 80:80 fastapi-cicd'
             }
         }
+        stage('check container'){
+            steps{
+                sh 'docker ps'
+            }
+        }
        
     }
 }
