@@ -9,7 +9,7 @@ pipeline {
         stage('Cleanup Previous Container') {
             steps {
                 sh '''
-                docker ps -q --filter "name=fastapi-cicd" | grep -q . && docker stop fastapi-cicd && docker rm fastapi-cicd || echo "No existing container found"
+                docker ps -a -q --filter "name=fastapi-cicd" | grep -q . && docker stop fastapi-cicd && docker rm fastapi-cicd || echo "No existing container found"
                 '''
             }
         }
