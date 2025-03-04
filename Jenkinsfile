@@ -1,27 +1,22 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage('Build'){
-            steps{
+    stages {
+        stage('Cleanup Previous Container') {
+            steps {
+                sh '''
+                docker ps -q --filter "name=fastapi-cicd" | grep -q . && docker stop fastapi-cicd && docker rm fastapi-cicd || echo "No existing container found"
+                '''
+            }
+        }
+        stage('Build') {
+            steps {
                 sh 'docker build -t fastapi-cicd .'
             }
         }
-        stage('check images'){
-            steps{
-                sh 'docker images'
+        stage('Run Container') {
+            steps {
+                sh 'docker run -d --network fastapi-net -p 8000:80 --name fastapi-cicd fastapi-cicd'
             }
         }
-
-        stage('run container'){
-            steps{
-                sh 'docker run -d -p 80:80 fastapi-cicd'
-            }
-        }
-        stage('check container'){
-            steps{
-                sh 'docker ps'
-            }
-        }
-       
     }
 }
