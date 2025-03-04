@@ -3,7 +3,7 @@ FROM python:3-slim
 
 # Warning: A port below 1024 has been exposed. This requires the image to run as a root user which is not a best practice.
 # For more information, please refer to https://aka.ms/vscode-docker-python-user-rights`
-EXPOSE 80
+EXPOSE 8001
 
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -19,5 +19,5 @@ WORKDIR /app
 COPY . /app
 
 # During debugging, this entry point will be overridden. For more information, please refer to https://aka.ms/vscode-docker-python-debug
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "-k", "uvicorn.workers.UvicornWorker", "app.main:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8001", "-k", "uvicorn.workers.UvicornWorker", "app.main:app"]
 
