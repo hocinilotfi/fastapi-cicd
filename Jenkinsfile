@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Run Container') {
             steps {
-                sh 'docker run -d --network fastapi-net -p 8000:80 --name fastapi-cicd fastapi-cicd'
+                sh 'docker run -d --network fastapi-net -p 8000:8000 --name fastapi-cicd fastapi-cicd'
             }
         }
     }
