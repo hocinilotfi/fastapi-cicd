@@ -3,7 +3,7 @@ app = FastAPI()
 
 @app.get('/')
 async def root():
-    return {'message': 'Hello World from continus deployment - test de deployment'}
+    return {'message': 'Hello World from continus deployment - test de deployment failed'}
 
 @app.get('/login')
 async def method_name():
