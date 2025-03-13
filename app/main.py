@@ -7,7 +7,7 @@ async def root():
 
 @app.get('/login')
 async def method_name():
-    return {'message': 'Login page'}
+    return {'message': 'Login page modified'}
 
 @app.get('/signup')
 async def method_name():
