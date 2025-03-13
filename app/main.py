@@ -7,4 +7,8 @@ async def root():
 
 @app.get('/login')
 async def login():
-    return {'message': 'Login'}
+    return {'message': 'Login2'}
+
+@app.get('/signup')
+async def login():
+    return {'message': 'Signup'}
